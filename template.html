@@ -1,0 +1,395 @@
+<title>Hong Kong Stamps to 1997</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a formal album, like a hall of antiquities. Every page sits inside one engraved frame with flower rosettes at the corners; headings are centred engraved small capitals; reigns are separated by flower ornaments. */
+:root{
+  --paper:#F4F5F7; --surface:#FFFFFF; --ink:#18202D; --muted:#5B6575; --rule:#D9DDE4;
+  --navy:#203864; --carmine:#9E2A2F; --carmine-soft:#F6E7E7;
+  --ok:#2F6B3A; --ok-soft:#E4F0E5; --sold:#6B6F78; --sold-soft:#ECEDEF;
+  --display:"IM Fell English", "Iowan Old Style", Georgia, serif;
+  --display-sc:"IM Fell English SC", "IM Fell English", Georgia, serif;
+  --body:"Work Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#11151C; --surface:#1A1F28; --ink:#E7E9ED; --muted:#9AA3B2; --rule:#2C3340;
+  --navy:#9DB4E0; --carmine:#E27A7E; --carmine-soft:#3A2224;
+  --ok:#86C792; --ok-soft:#1E3324; --sold:#A3A8B2; --sold-soft:#262B33; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --paper:#11151C; --surface:#1A1F28; --ink:#E7E9ED; --muted:#9AA3B2; --rule:#2C3340;
+  --navy:#9DB4E0; --carmine:#E27A7E; --carmine-soft:#3A2224;
+  --ok:#86C792; --ok-soft:#1E3324; --sold:#A3A8B2; --sold-soft:#262B33; color-scheme:dark }
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55;margin:0}
+a{color:var(--navy)}
+a:focus-visible,button:focus-visible,select:focus-visible{outline:2px solid var(--carmine);outline-offset:2px}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:20px}
+
+header.top{background:var(--paper)}
+header.top .wrap{display:flex;flex-direction:column;align-items:center;gap:10px;padding-block:26px 6px;text-align:center}
+.brand{font-family:var(--display-sc);font-size:1.25rem;letter-spacing:.18em;color:var(--ink);text-decoration:none}
+.brand small{font-family:var(--display-sc);font-size:.85em;letter-spacing:.18em;color:var(--muted);margin-left:6px}
+nav.reigns{display:flex;justify-content:center;gap:4px 22px;flex-wrap:wrap;font-family:var(--display-sc);font-size:.95rem;letter-spacing:.06em}
+nav.reigns a{text-decoration:none;color:var(--muted);padding-bottom:2px;border-bottom:1px solid transparent}
+nav.reigns a:hover{color:var(--ink)}
+nav.reigns a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--ink)}
+
+main{padding-block:28px 56px}
+.crumb{font-size:.82rem;color:var(--muted);margin-bottom:14px;text-align:center;letter-spacing:.04em}
+.crumb a{color:var(--muted)}
+h1{font-family:var(--display-sc);font-weight:400;letter-spacing:.04em;font-size:clamp(2rem,5vw,3.1rem);line-height:1.08;margin:0 0 10px;text-wrap:balance}
+.yr97{font-size:1.45em;color:inherit;line-height:1}
+h2{font-family:var(--display);font-weight:400;font-size:1.6rem;margin:0 0 8px}
+.lede{color:var(--muted);max-width:60ch;margin:0 auto}
+.eyebrow{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:10px}
+
+/* The frame (every page): double engraved rule with a flower rosette in a square at each corner, after the corner ornaments of the old definitives */
+.album{position:relative;margin-top:22px;min-height:60vh;padding:clamp(28px,6vw,64px) clamp(20px,6vw,64px);border:1.5px solid var(--ink)}
+.album::before{content:"";position:absolute;inset:7px;border:.5px solid var(--ink);pointer-events:none}
+.corner{position:absolute;width:46px;height:46px;background:var(--paper);border:1.5px solid var(--ink);display:grid;place-items:center;color:var(--ink)}
+.corner::before{content:"";position:absolute;inset:4px;border:.5px solid var(--ink)}
+.corner svg{width:30px;height:30px}
+.corner.tl{top:-9px;left:-9px}.corner.tr{top:-9px;right:-9px}.corner.bl{bottom:-9px;left:-9px}.corner.br{bottom:-9px;right:-9px}
+.album .mid{position:absolute;left:50%;transform:translateX(-50%);background:var(--paper);padding-inline:10px;color:var(--ink);display:flex}
+.album .mid svg{width:22px;height:22px}
+.album .mid.t{top:-12px}.album .mid.b{bottom:-12px}
+@media (max-width:520px){.corner{width:34px;height:34px}.corner svg{width:22px;height:22px}}
+
+/* Home: centred, the five reigns top to bottom in historical order, a flower ornament between each */
+.hometop{text-align:center}
+.eras{list-style:none;margin:40px auto 0;padding:0;max-width:640px;display:grid;gap:0}
+.era{display:flex;flex-direction:column;align-items:center;gap:16px;text-decoration:none;color:var(--ink);padding-block:6px}
+.era h2{margin:0;font-family:var(--display-sc);font-size:1.7rem;letter-spacing:.06em;text-align:center;line-height:1.2}
+.era .yrs{font-family:var(--display);font-size:1.15em;white-space:nowrap}
+.era img{height:210px;width:auto;max-width:100%;display:block;transition:transform .25s ease}
+.era:hover img{transform:scale(1.03)}
+.ornament{display:flex;align-items:center;gap:14px;color:var(--ink);margin:30px auto;max-width:360px}
+.ornament::before,.ornament::after{content:"";flex:1;border-top:.5px solid var(--ink);opacity:.7}
+.ornament svg{width:22px;height:22px;flex:none}
+.homefoot{margin:40px auto 0;font-size:.85rem;color:var(--muted);max-width:62ch;text-align:center;font-style:italic;font-family:var(--display);font-size:1rem}
+
+/* Reign page: two tabs (definitives / commemoratives); each year a band, issues listed under it */
+.reignhead{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;padding-bottom:6px}
+.reignhead h1 .yrs{font-size:.62em;white-space:nowrap}
+.reignhead .stats{display:flex;gap:28px;font-size:.8rem;color:var(--muted);letter-spacing:.06em}
+.reignhead .stats b{display:block;font-family:var(--mono);font-size:1.15rem;color:var(--ink);font-weight:500}
+.tabs{display:flex;justify-content:center;gap:40px;border-bottom:.5px solid var(--ink);margin-top:22px;flex-wrap:wrap}
+.tabs a{font-family:var(--display-sc);letter-spacing:.05em;font-size:1.35rem;text-decoration:none;color:var(--muted);padding:8px 0 10px;border-bottom:2px solid transparent;margin-bottom:-1px}
+.tabs a span{font-family:var(--mono);font-size:.8rem;margin-left:6px}
+.tabs a[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--ink)}
+.notice{margin:16px 0 0;font-size:.85rem;color:var(--muted)}
+.sets{list-style:none;margin:8px 0 0;padding:0}
+.sets a{display:grid;grid-template-columns:110px minmax(0,1fr) 120px 20px;gap:6px 24px;align-items:baseline;padding:16px 4px;border-bottom:1px solid var(--rule);text-decoration:none;color:var(--ink)}
+.sets a:hover{background:var(--surface)}
+.sets a:hover .go{transform:translateX(3px);color:var(--ink)}
+.sets .yr{font-family:var(--display);font-size:1.6rem;line-height:1}
+.sets .nm{font-family:var(--display-sc);letter-spacing:.03em;font-size:1.3rem;line-height:1.25}
+.sets .nm small{display:block;font-family:var(--mono);font-size:.76rem;color:var(--muted);margin-top:4px}
+.sets .ct{font-size:.85rem;color:var(--muted);text-align:right}
+.sets .ct em{display:block;font-style:normal;color:var(--ok);font-weight:600}
+.sets .go{color:var(--muted);transition:transform .15s ease}
+@media (max-width:640px){.sets a{grid-template-columns:70px minmax(0,1fr);}.sets .ct{grid-column:2;text-align:left}.sets .go{display:none}.sets .yr{font-size:1.25rem}}
+.sethead{border-bottom:.5px solid var(--ink);padding-bottom:16px;text-align:center}
+.sethead .yr{font-family:var(--display);font-size:2.2rem;line-height:1}
+.sethead h1{margin:6px 0 6px}
+.setmeta{margin:0;color:var(--muted);font-size:.9rem}
+.rows{list-style:none;margin:0;padding:0}
+.rows li{display:grid;grid-template-columns:minmax(0,1fr) 64px 80px 76px 104px;gap:12px;align-items:baseline;padding:10px 0;border-top:1px solid var(--rule);font-size:.92rem}
+.rows li:first-child{border-top:0}
+.rows .d a{text-decoration:none;color:var(--ink);font-weight:500}
+.rows .d a:hover{color:var(--navy);text-decoration:underline}
+.rows .d small{display:block;color:var(--muted);font-size:.8rem;font-weight:400}
+.rows .n{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap;font-size:.85rem}
+.rows .sg{color:var(--muted)}
+.rows .st{text-align:right}
+.colhead{padding-top:16px;border-bottom:1px solid var(--rule);padding-bottom:6px}
+.colhead ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr) 64px 80px 76px 104px;gap:12px;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.colhead li:nth-child(n+2){text-align:right}
+@media (max-width:640px){
+  .colhead{display:none}
+  .rows li{grid-template-columns:minmax(0,1fr) auto;row-gap:2px}
+  .rows .sg,.rows .cat{display:none}
+}
+.empty{padding:28px 0;color:var(--muted);max-width:60ch}
+.pill{display:inline-block;font-size:.72rem;font-weight:600;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.pill.available{background:var(--ok-soft);color:var(--ok)}
+.pill.sold{background:var(--sold-soft);color:var(--sold)}
+.pill.none{color:var(--muted);border:1px solid var(--rule)}
+
+/* Stamp page */
+.detail{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:36px;margin-top:20px;align-items:start}
+@media (max-width:720px){.detail{grid-template-columns:1fr}}
+.slot{background:var(--surface);border:1px solid var(--rule);padding:22px;display:grid;place-items:center}
+.slot .ph{width:100%;max-width:220px;aspect-ratio:4/5;border:2px dashed var(--rule);display:grid;place-items:center;text-align:center;color:var(--muted);font-size:.8rem;padding:12px}
+.slot .ph b{display:block;font-family:var(--display);font-weight:400;font-size:1.6rem;color:var(--carmine);margin-bottom:6px}
+dl.facts{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;margin:18px 0 0;font-size:.92rem}
+dl.facts dt{color:var(--muted)}
+dl.facts dd{margin:0;font-family:var(--mono);font-variant-numeric:tabular-nums}
+.checkout{margin-top:26px;background:var(--surface);border:1px solid var(--rule);padding:18px 20px;max-width:440px}
+.checkout h3{margin:0 0 12px;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.checkout label{display:block;font-size:.85rem;margin-bottom:4px}
+.checkout select{width:100%;padding:8px;font:inherit;background:var(--paper);color:var(--ink);border:1px solid var(--rule)}
+.lines{display:grid;grid-template-columns:1fr auto;gap:4px 0;margin-top:14px;font-size:.9rem}
+.lines span:nth-child(even){font-family:var(--mono);text-align:right;padding-left:12px}
+.lines .total{border-top:1px solid var(--rule);padding-top:8px;margin-top:4px;font-weight:600}
+.paybox{margin-top:16px;font-size:.85rem;color:var(--muted)}
+.unavail{margin-top:10px;font-size:.88rem;color:var(--muted)}
+.pager{display:flex;justify-content:space-between;gap:12px;margin-top:36px;font-size:.88rem;flex-wrap:wrap}
+@media (prefers-reduced-motion:reduce){.era img,.sets .go{transition:none}.era:hover img,.sets a:hover .go{transform:none}}
+</style>
+
+<header class="top"><div class="wrap">
+  <a class="brand" href="#home">Hong Kong Stamps <small>to 1997</small></a>
+  <nav class="reigns" id="nav"></nav>
+</div></header>
+<main class="wrap"><div class="album" id="frame"><div id="app"></div></div></main>
+
+<script>
+const DATA = /*__DATA__*/[];
+
+/* ---- Shop settings: KK to set these before going live ---- */
+const CONFIG = {
+  currency: "USD",
+  paypalClientId: "",            // PayPal client ID (sandbox first). Empty = checkout shown but not active.
+  postage: { ca: 1.50, us: 1.50, intl: 3.50 },   // placeholder postage, US$
+  taxRate: { ca: 0.0725, us: 0, intl: 0 }        // California base sales tax; local district rates add more
+};
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const money = v => v == null ? "—" : "$" + v.toFixed(2);
+const pound = v => v == null ? "—" : "£" + v.toFixed(2);
+const STATUS = { available:"Available", sold:"Sold", none:"Not in stock" };
+const pill = s => `<span class="pill ${s}">${STATUS[s]}</span>`;
+const byId = {};
+DATA.forEach(r => r.stamps.forEach((s, i) => byId[s.id] = { reign:r, i }));
+const total = DATA.reduce((n, r) => n + r.stamps.length, 0);
+
+function nav(active){
+  $("#nav").innerHTML = DATA.map(r =>
+    `<a href="#${r.key}"${r.key===active?' aria-current="page"':''}>${esc(r.name)}</a>`).join("");
+}
+
+const ROSETTE = `<svg viewBox="-20 -20 40 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.1">${[0,45,90,135,180,225,270,315].map(a=>`<path transform="rotate(${a})" d="M0 -3 C 5 -8 4 -15 0 -18 C -4 -15 -5 -8 0 -3 Z"/>`).join("")}<circle r="3.2"/></g><circle r="1.2" fill="currentColor"/></svg>`;
+const BUD = `<svg viewBox="-20 -20 40 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4">${[0,72,144,216,288].map(a=>`<path transform="rotate(${a})" d="M0 -4 C 6 -9 5 -16 0 -18 C -5 -16 -6 -9 0 -4 Z"/>`).join("")}<circle r="3.6"/></g></svg>`;
+function home(){
+  nav(null);
+  $("#app").innerHTML = `
+    <div class="hometop">
+      <div class="eyebrow">British Hong Kong · 1862 to 30 June 1997</div>
+      <h1>Hong Kong Stamps to <span class="yr97">1997</span></h1>
+      <p class="lede">The complete run of colonial Hong Kong issues, from the first Queen Victoria definitives of 1862 to the last stamps before the handover on 1 July 1997. ${total} stamps across five reigns.</p>
+    </div>
+    <div class="ornament">${BUD}</div>
+    <ol class="eras">${DATA.map((r, i) => `
+      <li>${i ? `<div class="ornament">${BUD}</div>` : ""}<a class="era" href="#${r.key}">
+        <h2>${esc(r.name)} <span class="yrs">(${esc(r.span)})</span></h2>
+        ${r.img ? `<img src="${r.img}" alt="${esc(r.name)} definitive stamp">` : ""}
+      </a></li>`).join("")}
+    </ol>
+    <p class="homefoot">Single stamps only, no miniature sheets. Every stamp is examined by hand for authenticity and condition. Catalogue values are shown in pounds for reference; prices are in US dollars.</p>`;
+}
+
+// engraved frame ornaments, drawn once around every page
+$("#frame").insertAdjacentHTML("afterbegin",
+  `<span class="corner tl">${ROSETTE}</span><span class="corner tr">${ROSETTE}</span><span class="corner bl">${ROSETTE}</span><span class="corner br">${ROSETTE}</span><span class="mid t">${BUD}</span><span class="mid b">${BUD}</span>`);
+
+/* ---- Sets: every stamp belongs to one set (an issue). Commemoratives: same year + same issue name.
+        Definitives: same year + same kind (regular / surcharge / coil). ---- */
+const setById = {};
+function defCat(s){
+  const d = s.desc.toLowerCase();
+  if (d.includes("coil")) return "coil";
+  if (d.includes("surch") || / on /.test(d)) return "surch";
+  return "def";
+}
+function defName(list, cat){
+  if (cat === "coil") return "Coil stamps";
+  if (cat === "surch") return "Definitive set (overprint)";
+  for (const s of list){
+    const n = (s.issue || "").replace(/\bdef\b.*$/i, "").replace(/\bType\b.*$/i, "").trim();
+    if (/\bdef\b/i.test(s.desc) && /^[A-Z]/.test(n) && n.split(" ").length <= 4) return n + " definitives";
+  }
+  return "Definitive set";
+}
+DATA.forEach(r => {
+  r.sets = { def: [], com: [] };
+  ["def", "com"].forEach(k => {
+    let cur = null;
+    r.stamps.filter(s => s.kind === k).forEach(s => {
+      const key = k === "com" ? s.issue.split(/\s+/)[0].toLowerCase() : defCat(s);
+      if (cur && cur.year === s.year && cur.key === key) cur.stamps.push(s);
+      else { cur = { year: s.year, key, kind: k, stamps: [s] }; r.sets[k].push(cur); }
+    });
+    r.sets[k].forEach((st, i) => {
+      st.id = `${r.key}-${k[0]}${i + 1}`;
+      st.reign = r;
+      st.name = k === "com" ? st.stamps[0].issue : defName(st.stamps, st.key);
+      st.stamps.forEach(s => s.set = st);
+      setById[st.id] = st;
+    });
+  });
+});
+
+function faceValue(s){
+  // under a commemorative set, show just the face value (plus any note), not the set name again
+  if (s.kind !== "com" || !s.issue) return s.desc.replace(/\(surch\)/i, "(overprint)");
+  return s.desc.replace(s.issue, "").replace(/\s+/g, " ").trim() || s.desc;
+}
+const values = st => st.stamps.map(s => (s.desc.match(/^\$?\d[\d.,]*c?/) || [""])[0]).filter(Boolean);
+
+function reign(r, kind){
+  nav(r.key);
+  const sets = r.sets[kind];
+  const n = k => r.sets[k].reduce((a, st) => a + st.stamps.length, 0);
+  const avail = r.stamps.filter(s => s.status === "available").length;
+  const list = sets.map(st => {
+    const a = st.stamps.filter(s => s.status === "available").length;
+    const v = values(st);
+    return `<li><a href="#${st.id}">
+      <span class="yr">${esc(st.year)}</span>
+      <span class="nm">${esc(st.name)}<small>${esc(v.slice(0, 12).join(" · "))}${v.length > 12 ? " …" : ""}</small></span>
+      <span class="ct">${st.stamps.length} stamp${st.stamps.length > 1 ? "s" : ""}${a ? `<em>${a} available</em>` : ""}</span>
+      <span class="go" aria-hidden="true">→</span></a></li>`;
+  }).join("");
+  $("#app").innerHTML = `
+    <div class="crumb"><a href="#home">Home</a> / ${esc(r.name)}</div>
+    <div class="reignhead">
+      <h1>${esc(r.name)} <span class="yrs">(${esc(r.span)})</span></h1>
+      <div class="stats"><div><b>${r.stamps.length}</b>stamps</div><div><b>${avail}</b>available</div></div>
+    </div>
+    <nav class="tabs" role="tablist">
+      <a role="tab" href="#${r.key}" aria-selected="${kind !== "com"}">Definitives<span>${n("def")}</span></a>
+      <a role="tab" href="#${r.key}-com" aria-selected="${kind === "com"}">Commemoratives<span>${n("com")}</span></a>
+    </nav>
+    ${sets.length ? `<ol class="sets">${list}</ol>` : `<p class="empty">${kind === "com"
+      ? `No commemorative stamps were issued for Hong Kong in the reign of ${esc(r.name)}. Every stamp of the period is a definitive.`
+      : `No definitive stamps listed for this reign.`}</p>`}`;
+}
+
+function rowHTML(s){
+  return `<li>
+    <span class="d"><a href="#s-${encodeURIComponent(s.id)}">${esc(faceValue(s))}</a>${s.colour ? `<small>${esc(s.colour)}</small>` : ""}</span>
+    <span class="n sg">${esc(s.sg) || "—"}</span>
+    <span class="n cat">${pound(s.cat)}</span>
+    <span class="n">${money(s.price)}</span>
+    <span class="st">${pill(s.status)}</span></li>`;
+}
+
+function setPage(st){
+  const r = st.reign, k = st.kind, i = r.sets[k].indexOf(st);
+  const prev = r.sets[k][i - 1], next = r.sets[k][i + 1];
+  nav(r.key);
+  const catTotal = st.stamps.reduce((a, s) => a + (s.cat || 0), 0);
+  const allPriced = st.stamps.every(s => s.price != null);
+  const setPrice = allPriced ? st.stamps.reduce((a, s) => a + s.price, 0) : null;
+  const hasSG = st.stamps.some(s => s.sg);
+  $("#app").innerHTML = `
+    <div class="crumb"><a href="#home">Home</a> / <a href="#${r.key}${k === "com" ? "-com" : ""}">${esc(r.name)} · ${k === "com" ? "Commemoratives" : "Definitives"}</a></div>
+    <div class="sethead">
+      <div class="yr">${esc(st.year)}</div>
+      <h1>${esc(st.name)}</h1>
+      <p class="setmeta">${st.stamps.length} stamp${st.stamps.length > 1 ? "s" : ""} · catalogue ${pound(catTotal)} used · set price ${money(setPrice)}</p>
+    </div>
+    ${hasSG ? "" : `<p class="notice">SG catalogue numbers are being added.</p>`}
+    <div class="colhead"><ul><li>Stamp</li><li>SG No.</li><li>Cat. used</li><li>Price</li><li>Status</li></ul></div>
+    <ul class="rows">${st.stamps.map(rowHTML).join("")}</ul>
+    <div class="pager">
+      <span>${prev ? `← <a href="#${prev.id}">${esc(prev.year)} ${esc(prev.name)}</a>` : ""}</span>
+      <span>${next ? `<a href="#${next.id}">${esc(next.year)} ${esc(next.name)}</a> →` : ""}</span>
+    </div>`;
+}
+
+function stamp(id){
+  const hit = byId[id]; if (!hit) return home();
+  const { reign:r, i } = hit, s = r.stamps[i];
+  nav(r.key);
+  const sib = s.set.stamps, j = sib.indexOf(s), prev = sib[j-1], next = sib[j+1];
+  const canBuy = s.status === "available" && s.price != null;
+  $("#app").innerHTML = `
+    <div class="crumb"><a href="#home">Home</a> / <a href="#${r.key}${s.kind==="com"?"-com":""}">${esc(r.name)}</a> / <a href="#${s.set.id}">${esc(s.year)} ${esc(s.set.name)}</a></div>
+    <div class="detail">
+      <div class="slot"><div class="ph"><div><b>${esc(r.cipher)}</b>Photo of this stamp<br>coming soon</div></div></div>
+      <div>
+        <div class="eyebrow">${esc(r.name)} · ${esc(s.year)} · ${esc(s.set.name)}</div>
+        <h2>${esc(s.desc)}</h2>
+        ${pill(s.status)}
+        <dl class="facts">
+          <dt>SG No.</dt><dd>${esc(s.sg) || "to be added"}</dd>
+          <dt>Year</dt><dd>${esc(s.year)}</dd>
+          <dt>Colour</dt><dd>${esc(s.colour) || "—"}</dd>
+          <dt>Catalogue (used)</dt><dd>${pound(s.cat)}</dd>
+          <dt>Price</dt><dd>${money(s.price)}</dd>
+        </dl>
+        <div class="checkout">
+          <h3>Buy this stamp</h3>
+          <label for="shipto">Ship to</label>
+          <select id="shipto">
+            <option value="ca">California</option>
+            <option value="us">Rest of United States</option>
+            <option value="intl" selected>International</option>
+          </select>
+          <div class="lines" id="lines"></div>
+          ${canBuy
+            ? `<div class="paybox" id="paybox">${CONFIG.paypalClientId ? "Loading PayPal…" : "PayPal and card checkout will appear here once the shop is connected."}</div>`
+            : `<p class="unavail">${s.status === "sold" ? "This stamp has been sold." : "This stamp is not in stock at the moment."}</p>`}
+        </div>
+      </div>
+    </div>
+    <div class="pager">
+      <span>${prev ? `← <a href="#s-${encodeURIComponent(prev.id)}">${esc(faceValue(prev))}</a>` : ""}</span>
+      <span>${next ? `<a href="#s-${encodeURIComponent(next.id)}">${esc(faceValue(next))}</a> →` : ""}</span>
+    </div>`;
+  const calc = () => {
+    const dest = $("#shipto").value, p = s.price ?? 0;
+    const post = CONFIG.postage[dest], tax = p * CONFIG.taxRate[dest];
+    $("#lines").innerHTML = `
+      <span>Stamp</span><span>${money(s.price)}</span>
+      <span>Postage</span><span>${money(post)}</span>
+      <span>Sales tax</span><span>${money(tax)}</span>
+      <span class="total">Total</span><span class="total">${s.price == null ? "—" : money(p + post + tax)}</span>`;
+    return { dest, total: p + post + tax };
+  };
+  $("#shipto").addEventListener("change", calc);
+  calc();
+  if (canBuy && CONFIG.paypalClientId) loadPayPal(s, calc);
+}
+
+/* PayPal Smart Buttons (PayPal balance + credit/debit card). Works when the site is hosted on KK's own domain. */
+function loadPayPal(s, calc){
+  const go = () => window.paypal.Buttons({
+    createOrder: (d, actions) => actions.order.create({ purchase_units: [{
+      description: `Hong Kong ${s.year} ${s.desc}${s.sg ? " (SG " + s.sg + ")" : ""}`.slice(0,127),
+      amount: { value: calc().total.toFixed(2), currency_code: CONFIG.currency } }] }),
+    onApprove: (d, actions) => actions.order.capture().then(() => {
+      $("#paybox").textContent = "Thank you. Payment received; the stamp will be posted to the PayPal shipping address.";
+    }),
+    onError: () => { $("#paybox").textContent = "Payment did not go through. Please try again."; }
+  }).render("#paybox").then(() => {
+    const t = $("#paybox").firstChild; if (t && t.nodeType === 3) t.remove();
+  });
+  if (window.paypal) return go();
+  const sc = document.createElement("script");
+  sc.src = `https://www.paypal.com/sdk/js?client-id=${encodeURIComponent(CONFIG.paypalClientId)}&currency=${CONFIG.currency}`;
+  sc.onload = go;
+  sc.onerror = () => { $("#paybox").textContent = "PayPal could not load on this page."; };
+  document.head.appendChild(sc);
+}
+
+function route(){
+  const h = decodeURIComponent(location.hash.slice(1));
+  if (h.startsWith("s-")) stamp(h.slice(2));
+  else if (setById[h]) setPage(setById[h]);
+  else {
+    const [rk, tab] = h.split("-");
+    const r = DATA.find(x => x.key === rk);
+    if (r) reign(r, tab === "com" ? "com" : "def"); else home();
+  }
+  window.scrollTo(0, 0);
+}
+window.addEventListener("hashchange", route);
+route();
+</script>
