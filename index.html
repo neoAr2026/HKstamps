@@ -1,3 +1,4 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Hong Kong Stamps to 1997</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -71,10 +72,10 @@ h2{font-family:var(--display);font-weight:400;font-size:1.6rem;margin:0 0 8px}
 .ornament svg{width:22px;height:22px;flex:none}
 .homefoot{margin:40px auto 0;font-size:.85rem;color:var(--muted);max-width:62ch;text-align:center;font-style:italic;font-family:var(--display);font-size:1rem}
 
-/* Reign page: two tabs (definitives / commemoratives); each year a band, issues listed under it */
+/* Reign page: one list, definitives and commemoratives together in date order */
 .reignhead{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;padding-bottom:6px}
 .reignhead h1 .yrs{font-size:.62em;white-space:nowrap}
-.reignhead .stats{display:flex;gap:28px;font-size:.8rem;color:var(--muted);letter-spacing:.06em}
+.reignhead .stats{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 28px;font-size:.8rem;color:var(--muted);letter-spacing:.06em}
 .reignhead .stats b{display:block;font-family:var(--mono);font-size:1.15rem;color:var(--ink);font-weight:500}
 .tabs{display:flex;justify-content:center;gap:40px;border-bottom:.5px solid var(--ink);margin-top:22px;flex-wrap:wrap}
 .tabs a{font-family:var(--display-sc);letter-spacing:.05em;font-size:1.35rem;text-decoration:none;color:var(--muted);padding:8px 0 10px;border-bottom:2px solid transparent;margin-bottom:-1px}
@@ -82,6 +83,7 @@ h2{font-family:var(--display);font-weight:400;font-size:1.6rem;margin:0 0 8px}
 .tabs a[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--ink)}
 .notice{margin:16px 0 0;font-size:.85rem;color:var(--muted)}
 .sets{list-style:none;margin:8px 0 0;padding:0}
+.setsall{margin-top:22px;border-top:.5px solid var(--ink)}
 .sets a{display:grid;grid-template-columns:110px minmax(0,1fr) 120px 20px;gap:6px 24px;align-items:baseline;padding:16px 4px;border-bottom:1px solid var(--rule);text-decoration:none;color:var(--ink)}
 .sets a:hover{background:var(--surface)}
 .sets a:hover .go{transform:translateX(3px);color:var(--ink)}
@@ -232,6 +234,10 @@ DATA.forEach(r => {
       setById[st.id] = st;
     });
   });
+  // one combined list: definitives and commemoratives together, in date order
+  const first = st => r.stamps.indexOf(st.stamps[0]);
+  r.sets.all = [...r.sets.def, ...r.sets.com].sort((a, b) =>
+    (parseInt(a.year) || 0) - (parseInt(b.year) || 0) || first(a) - first(b));
 });
 
 function faceValue(s){
@@ -241,9 +247,9 @@ function faceValue(s){
 }
 const values = st => st.stamps.map(s => (s.desc.match(/^\$?\d[\d.,]*c?/) || [""])[0]).filter(Boolean);
 
-function reign(r, kind){
+function reign(r){
   nav(r.key);
-  const sets = r.sets[kind];
+  const sets = r.sets.all;
   const n = k => r.sets[k].reduce((a, st) => a + st.stamps.length, 0);
   const avail = r.stamps.filter(s => s.status === "available").length;
   const list = sets.map(st => {
@@ -251,7 +257,7 @@ function reign(r, kind){
     const v = values(st);
     return `<li><a href="#${st.id}">
       <span class="yr">${esc(st.year)}</span>
-      <span class="nm">${esc(st.name)}<small>${esc(v.slice(0, 12).join(" · "))}${v.length > 12 ? " …" : ""}</small></span>
+      <span class="nm">${esc(st.name)}<small>${st.kind === "com" ? "Commemorative · " : ""}${esc(v.slice(0, 12).join(" · "))}${v.length > 12 ? " …" : ""}</small></span>
       <span class="ct">${st.stamps.length} stamp${st.stamps.length > 1 ? "s" : ""}${a ? `<em>${a} available</em>` : ""}</span>
       <span class="go" aria-hidden="true">→</span></a></li>`;
   }).join("");
@@ -259,15 +265,9 @@ function reign(r, kind){
     <div class="crumb"><a href="#home">Home</a> / ${esc(r.name)}</div>
     <div class="reignhead">
       <h1>${esc(r.name)} <span class="yrs">(${esc(r.span)})</span></h1>
-      <div class="stats"><div><b>${r.stamps.length}</b>stamps</div><div><b>${avail}</b>available</div></div>
+      <div class="stats"><div><b>${r.stamps.length}</b>stamps</div><div><b>${n("def")}</b>definitives</div><div><b>${n("com")}</b>commemoratives</div><div><b>${avail}</b>available</div></div>
     </div>
-    <nav class="tabs" role="tablist">
-      <a role="tab" href="#${r.key}" aria-selected="${kind !== "com"}">Definitives<span>${n("def")}</span></a>
-      <a role="tab" href="#${r.key}-com" aria-selected="${kind === "com"}">Commemoratives<span>${n("com")}</span></a>
-    </nav>
-    ${sets.length ? `<ol class="sets">${list}</ol>` : `<p class="empty">${kind === "com"
-      ? `No commemorative stamps were issued for Hong Kong in the reign of ${esc(r.name)}. Every stamp of the period is a definitive.`
-      : `No definitive stamps listed for this reign.`}</p>`}`;
+    ${sets.length ? `<ol class="sets setsall">${list}</ol>` : `<p class="empty">No stamps listed for this reign.</p>`}`;
 }
 
 function rowHTML(s){
@@ -280,15 +280,15 @@ function rowHTML(s){
 }
 
 function setPage(st){
-  const r = st.reign, k = st.kind, i = r.sets[k].indexOf(st);
-  const prev = r.sets[k][i - 1], next = r.sets[k][i + 1];
+  const r = st.reign, i = r.sets.all.indexOf(st);
+  const prev = r.sets.all[i - 1], next = r.sets.all[i + 1];
   nav(r.key);
   const catTotal = st.stamps.reduce((a, s) => a + (s.cat || 0), 0);
   const allPriced = st.stamps.every(s => s.price != null);
   const setPrice = allPriced ? st.stamps.reduce((a, s) => a + s.price, 0) : null;
   const hasSG = st.stamps.some(s => s.sg);
   $("#app").innerHTML = `
-    <div class="crumb"><a href="#home">Home</a> / <a href="#${r.key}${k === "com" ? "-com" : ""}">${esc(r.name)} · ${k === "com" ? "Commemoratives" : "Definitives"}</a></div>
+    <div class="crumb"><a href="#home">Home</a> / <a href="#${r.key}">${esc(r.name)}</a></div>
     <div class="sethead">
       <div class="yr">${esc(st.year)}</div>
       <h1>${esc(st.name)}</h1>
@@ -310,7 +310,7 @@ function stamp(id){
   const sib = s.set.stamps, j = sib.indexOf(s), prev = sib[j-1], next = sib[j+1];
   const canBuy = s.status === "available" && s.price != null;
   $("#app").innerHTML = `
-    <div class="crumb"><a href="#home">Home</a> / <a href="#${r.key}${s.kind==="com"?"-com":""}">${esc(r.name)}</a> / <a href="#${s.set.id}">${esc(s.year)} ${esc(s.set.name)}</a></div>
+    <div class="crumb"><a href="#home">Home</a> / <a href="#${r.key}">${esc(r.name)}</a> / <a href="#${s.set.id}">${esc(s.year)} ${esc(s.set.name)}</a></div>
     <div class="detail">
       <div class="slot"><div class="ph"><div><b>${esc(r.cipher)}</b>Photo of this stamp<br>coming soon</div></div></div>
       <div>
@@ -386,10 +386,12 @@ function route(){
   else {
     const [rk, tab] = h.split("-");
     const r = DATA.find(x => x.key === rk);
-    if (r) reign(r, tab === "com" ? "com" : "def"); else home();
+    if (r) reign(r); else home();
   }
   window.scrollTo(0, 0);
 }
 window.addEventListener("hashchange", route);
 route();
 </script>
+
+</body></html>
