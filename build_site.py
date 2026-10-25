@@ -85,11 +85,17 @@ def main():
     by_reign = {k: [] for k, *_ in REIGNS}
     name_to_key = {n: k for k, n, *_ in REIGNS}
     order = 0
+    seen = set()
     for r in rows[1:]:
         reign = get(r, "reign")
-        if reign not in name_to_key or get(r, "scott") is None:
+        if reign not in name_to_key or not str(get(r, "desc") or "").strip():
             continue
         order += 1
+        scott = str(get(r, "scott") or "").strip()
+        sgno = str(get(r, "sg") or "").strip()
+        sid = scott or (f"sg{sgno}" if sgno else f"row{order}")   # internal link id; stamps without a Scott No. are kept
+        while sid in seen: sid += "b"
+        seen.add(sid)
         price = num(get(r, "price"))
         qty = num(get(r, "qty")) or 0
         st = str(get(r, "status") or "").strip().lower()
@@ -100,7 +106,7 @@ def main():
         else:
             status = "none"
         by_reign[name_to_key[reign]].append(dict(
-            id=str(get(r, "scott")).strip(),
+            id=sid,
             sg=str(get(r, "sg") or "").strip(),
             year=str(get(r, "year") or "").strip(),
             desc=str(get(r, "desc") or "").strip(),
